@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掩耳盗铃</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.8;
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: white;
+        }
+        p {
+            font-size: 1.2em;
+            color: white;
+        }
+        audio {
+            display: none;
+        }
+        ruby {
+            ruby-position: over;
+        }
+        rt {
+            font-size: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="1.mp4" type="video/mp4">
+        您的浏览器不支持视频播放。
+    </video>
+    <audio autoplay loop>
+        <source src="1.mp3" type="audio/mp3">
+        您的浏览器不支持音频播放。
+        <audio id="bgm" loop>
+            <source src="1.mp3" type="audio/mp3">
+            您的浏览器不支持音频播放。
+        </audio>
+        <button onclick="document.getElementById('bgm').play()">播放音乐</button>
+    </audio>
+    <div class="content">
+        <h1>
+            <ruby>掩耳盗铃<rt>yǎn ěr dào líng</rt></ruby>
+        </h1>
+        <p>掩耳盗铃是一个出自中国古代的成语，意思是形容自欺欺人，掩盖真相来蒙骗自己。</p>
+        <p>传说有一个人想偷一口大钟，但敲钟的声音太大了，于是他把自己的耳朵捂住，以为这样别人就听不到钟声。他的行为被旁人发现，最终未能得逞。这一故事寓意：用掩耳的方式欺骗自己，只能掩盖一时，无法逃避事实。</p>
+        <img src="generated_image.png" alt="掩耳盗铃图像">
+    </div>
+</body>
+</html>
