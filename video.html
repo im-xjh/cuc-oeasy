@@ -47,10 +47,14 @@
         rt {
             font-size: 0.5em;
         }
+        .control-buttons {
+            font-size: 1em;
+            margin-top: 10px;
+        }
         .play-icon {
-            font-size: 1.5em;
+            font-size: 1.2em;
             cursor: pointer;
-            margin-left: 10px;
+            margin: 0 15px;
             color: white;
             text-shadow: none;
         }
@@ -59,25 +63,24 @@
         }
     </style>
     <script>
-        // 渐入效果
-        window.onload = function () {
-            const bgm = document.getElementById('bgm');
-            let volume = 0;
-            bgm.volume = 0;
-            bgm.play();
-            const fadeIn = setInterval(() => {
-                if (volume < 1) {
-                    volume += 0.1;
-                    bgm.volume = Math.min(volume, 1);
-                } else {
-                    clearInterval(fadeIn);
-                }
-            }, 200); // 每200毫秒音量增加
-        };
-
-        function playExplanation() {
+        // 解说播放/暂停切换
+        function toggleExplanation() {
             const explanationAudio = document.getElementById('explanation-audio');
-            explanationAudio.play();
+            if (explanationAudio.paused) {
+                explanationAudio.play();
+            } else {
+                explanationAudio.pause();
+            }
+        }
+
+        // 背景音乐播放/暂停切换
+        function toggleBGM() {
+            const bgmAudio = document.getElementById('bgm');
+            if (bgmAudio.paused) {
+                bgmAudio.play();
+            } else {
+                bgmAudio.pause();
+            }
         }
     </script>
 </head>
@@ -97,8 +100,11 @@
     <div class="content">
         <h1>
             <ruby>掩耳盗铃<rt>yǎn ěr dào líng</rt></ruby>
-            <span class="play-icon" onclick="playExplanation()">🔔 播放解释</span>
         </h1>
+        <div class="control-buttons">
+            <span class="play-icon" onclick="toggleExplanation()">🔔 播放/暂停解释</span>
+            <span class="play-icon" onclick="toggleBGM()">🎵 播放/暂停背景音乐</span>
+        </div>
         <p>掩耳盗铃是一个出自中国古代的成语，意思是形容自欺欺人，掩盖真相来蒙骗自己。</p>
         <p>传说有一个人想偷一口大钟，但敲钟的声音太大了，于是他把自己的耳朵捂住，以为这样别人就听不到钟声。他的行为被旁人发现，最终未能得逞。这一故事寓意：用掩耳的方式欺骗自己，只能掩盖一时，无法逃避事实。</p>
     </div>
