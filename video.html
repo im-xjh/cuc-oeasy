@@ -41,34 +41,63 @@
             font-size: 1.2em;
             color: white;
         }
-        audio {
-            display: none;
-        }
         ruby {
             ruby-position: over;
         }
         rt {
             font-size: 0.5em;
         }
+        .play-icon {
+            font-size: 1.5em;
+            cursor: pointer;
+            margin-left: 10px;
+            color: white;
+            text-shadow: none;
+        }
+        .play-icon:hover {
+            color: gold;
+        }
     </style>
+    <script>
+        // 渐入效果
+        window.onload = function () {
+            const bgm = document.getElementById('bgm');
+            let volume = 0;
+            bgm.volume = 0;
+            bgm.play();
+            const fadeIn = setInterval(() => {
+                if (volume < 1) {
+                    volume += 0.1;
+                    bgm.volume = Math.min(volume, 1);
+                } else {
+                    clearInterval(fadeIn);
+                }
+            }, 200); // 每200毫秒音量增加
+        };
+
+        function playExplanation() {
+            const explanationAudio = document.getElementById('explanation-audio');
+            explanationAudio.play();
+        }
+    </script>
 </head>
 <body>
     <video autoplay loop muted>
         <source src="1.mp4" type="video/mp4">
         您的浏览器不支持视频播放。
     </video>
-    <audio autoplay loop>
+    <audio id="bgm" loop>
+        <source src="BGM.aac" type="audio/aac">
+        您的浏览器不支持音频播放。
+    </audio>
+    <audio id="explanation-audio">
         <source src="1.mp3" type="audio/mp3">
         您的浏览器不支持音频播放。
-        <audio id="bgm" loop>
-            <source src="1.mp3" type="audio/mp3">
-            您的浏览器不支持音频播放。
-        </audio>
-        <button onclick="document.getElementById('bgm').play()">播放音乐</button>
     </audio>
     <div class="content">
         <h1>
             <ruby>掩耳盗铃<rt>yǎn ěr dào líng</rt></ruby>
+            <span class="play-icon" onclick="playExplanation()">🔔 播放解释</span>
         </h1>
         <p>掩耳盗铃是一个出自中国古代的成语，意思是形容自欺欺人，掩盖真相来蒙骗自己。</p>
         <p>传说有一个人想偷一口大钟，但敲钟的声音太大了，于是他把自己的耳朵捂住，以为这样别人就听不到钟声。他的行为被旁人发现，最终未能得逞。这一故事寓意：用掩耳的方式欺骗自己，只能掩盖一时，无法逃避事实。</p>
